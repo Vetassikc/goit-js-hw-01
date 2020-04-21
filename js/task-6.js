@@ -7,5 +7,13 @@ do {
     alert(`Общая сумма чисел равна ${total}`);
     break;
   }
-  total += Number(input);
+
+  input = Number(input);
+  const notANumber = Number.isNaN(input);
+
+  if (notANumber) {
+    alert('Было введено не число, попробуйте еще раз');
+    continue;
+  }
+  total += input;
 } while (input !== null);
