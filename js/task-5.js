@@ -1,34 +1,36 @@
-const priceChina = 100;
-const priceChili = 250;
-const priceAustralia = 170;
-const priceIndia = 80;
-const priceJamaica = 120;
+let inputCountry = prompt('Введите страну доставки');
+let price = 0;
 
-let message;
-let order = prompt('В какую страну желаете сделать заказ?').toLocaleLowerCase();
+if (!inputCountry) alert('Отменено пользователем!');
+else {
+  let availableCountry = true;
+  let countryLowerCase = inputCountry.toLowerCase();
 
-String.prototype.firstLetterCaps = function () {
-  return this.charAt(0).toUpperCase() + this.slice(1);
-};
+  switch (countryLowerCase) {
+    case 'китай':
+      price = 100;
+      break;
+    case 'чили':
+      price = 250;
+      break;
+    case 'австралия':
+      price = 170;
+      break;
+    case 'индия':
+      price = 80;
+      break;
+    case 'ямайка':
+      price = 120;
+      break;
 
-switch (order) {
-  case 'китай':
-    message = `Доставка в ${order.firstLetterCaps()} будет стоить ${priceChina} кредитов`;
-    break;
-  case 'чили':
-    message = `Доставка в ${order.firstLetterCaps()} будет стоить ${priceChina} кредитов`;
-    break;
-  case 'австралия':
-    message = `Доставка в ${order.firstLetterCaps()} будет стоить ${priceChina} кредитов`;
-    break;
-  case 'индия':
-    message = `Доставка в ${order.firstLetterCaps()} будет стоить ${priceChina} кредитов`;
-    break;
-  case 'ямайка':
-    message = `Доставка в ${order.firstLetterCaps()} будет стоить ${priceChina} кредитов`;
-    break;
-  default:
-    message = 'В вашей стране доставка не доступна';
+    default:
+      availableCountry = false;
+  }
+  if (!availableCountry) alert('В вашей стране доставка не доступна');
+  else {
+    let countryCapytalize =
+      countryLowerCase.substring(0, 1).toUpperCase() +
+      countryLowerCase.substring(1);
+    alert(`Доставка в ${countryCapytalize} будет стоить ${price} кредитов`);
+  }
 }
-
-alert(message);
